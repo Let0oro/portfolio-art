@@ -18,14 +18,22 @@ import "../styles/sections/_projects.scss";
             <p class="stack">{project.stack}</p>
             <p class="desc">{project.description}</p>
             <div class="actions">
+              {project.gallery && project.gallery.length > 0 && (
+                <button
+                  class="btn-preview"
+                  data-gallery={JSON.stringify(project.gallery)}
+                >
+                  Ver Preview
+                </button>
+              )}
               {project.codeLink && (
                 <a href={project.codeLink} target="_blank" rel="noreferrer">
-                  Ver Código
+                  Código
                 </a>
               )}
               {project.liveLink && (
                 <a href={project.liveLink} target="_blank" rel="noreferrer">
-                  Ver Demo
+                  Demo
                 </a>
               )}
             </div>
@@ -36,6 +44,23 @@ import "../styles/sections/_projects.scss";
   </div>
 </section>
 
+<!-- Vanilla JS Modal for Previews -->
+<dialog id="preview-modal" class="project-modal">
+  <div class="project-modal__backdrop"></div>
+  <div class="project-modal__content-wrapper">
+    <button class="project-modal__close" aria-label="Cerrar">&times;</button>
+    <div class="project-modal__media-container" id="media-container">
+      <!-- Media inserted dynamically -->
+    </div>
+
+    <div class="project-modal__controls">
+      <button class="control-btn prev" aria-label="Anterior">&#8592;</button>
+      <div class="slide-indicator" id="slide-indicator">1 / 5</div>
+      <button class="control-btn next" aria-label="Siguiente">&#8594;</button>
+    </div>
+  </div>
+</dialog>
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -43,6 +68,7 @@ import "../styles/sections/_projects.scss";
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Reveal animation
     gsap.fromTo(
       ".project-card",
       { opacity: 0, y: 40 },
@@ -58,5 +84,83 @@ import "../styles/sections/_projects.scss";
         },
       },
     );
+
+    // Modal Logic
+    const modal = document.getElementById("preview-modal") as HTMLDialogElement;
+    const mediaContainer = document.getElementById("media-container");
+    const indicator = document.getElementById("slide-indicator");
+    const closeBtn = modal.querySelector(".project-modal__close");
+    const prevBtn = modal.querySelector(".control-btn.prev");
+    const nextBtn = modal.querySelector(".control-btn.next");
+    const previewButtons = document.querySelectorAll(".btn-preview");
+
+    let currentGallery: { type: string; url: string }[] = [];
+    let currentIndex = 0;
+
+    const renderMedia = (index: number) => {
+      if (!currentGallery || currentGallery.length === 0) return;
+
+      const item = currentGallery[index];
+      mediaContainer!.innerHTML = ""; // clear
+
+      if (item.type === "video") {
+        const video = document.createElement("video");
+        video.src = item.url;
+        video.controls = true;
+        video.autoplay = true;
+        video.muted = true;
+        video.style.maxWidth = "100%";
+        video.style.maxHeight = "70vh";
+        mediaContainer!.appendChild(video);
+      } else {
+        const img = document.createElement("img");
+        img.src = item.url;
+        img.style.maxWidth = "100%";
+        img.style.maxHeight = "70vh";
+        img.style.objectFit = "contain";
+        mediaContainer!.appendChild(img);
+      }
+
+      indicator!.textContent = `${index + 1} / ${currentGallery.length}`;
+    };
+
+    previewButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const galleryRaw = target.getAttribute("data-gallery");
+        if (galleryRaw) {
+          currentGallery = JSON.parse(galleryRaw);
+          currentIndex = 0;
+          renderMedia(currentIndex);
+          modal.showModal();
+          document.body.style.overflow = "hidden"; // prevent background scrolling
+        }
+      });
+    });
+
+    const closeModal = () => {
+      modal.close();
+      document.body.style.overflow = "";
+      mediaContainer!.innerHTML = ""; // stop videos when closing
+    };
+
+    closeBtn?.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      // Close if clicking outside the modal content
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      renderMedia(currentIndex);
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      currentIndex =
+        (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      renderMedia(currentIndex);
+    });
   });
 </script>
