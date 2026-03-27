@@ -1,0 +1,77 @@
+@use '../tokens';
+@use '../mixins';
+
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 0;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        // Darken the background to ensure readibility, with a slight warm gradient
+        background: linear-gradient(to bottom, rgba(8, 7, 10, 0.7), rgba(42, 20, 20, 0.85));
+        z-index: 1;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 10;
+        max-width: 650px;
+        text-align: center;
+        padding: 3rem;
+        opacity: 0; // for GSAP
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            color: var(--clr-ivory);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    &__subtitle {
+        color: var(--clr-gold);
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--clr-ivory);
+
+        strong {
+            color: var(--clr-gold);
+        }
+
+        em {
+            color: var(--clr-oxide); // greenish accent for developer
+            font-style: normal;
+            font-weight: bold;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__content h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+        }
+    }
+}

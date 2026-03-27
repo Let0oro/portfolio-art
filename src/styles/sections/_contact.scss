@@ -1,0 +1,87 @@
+@use '../tokens';
+@use '../mixins';
+
+.contact-section {
+    padding: 8rem 2rem;
+    text-align: center;
+    position: relative;
+
+    &__container {
+        max-width: 600px;
+        margin: 0 auto;
+        @include mixins.frame;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__desc {
+        margin-bottom: 3rem;
+        color: var(--clr-ivory);
+        opacity: 0.8;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(243, 230, 212, 0.05);
+            border: 1px solid var(--clr-oxide);
+            color: var(--clr-ivory);
+            font-family: var(--ff-body);
+            border-radius: 4px;
+
+            &:focus {
+                outline: none;
+                border-color: var(--clr-gold);
+            }
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 1rem;
+            background-color: var(--clr-red);
+            color: var(--clr-ivory);
+            border: 2px solid var(--clr-gold);
+            padding: 1rem 2rem;
+            font-family: var(--ff-display);
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            align-self: center;
+            transition: transform var(--transition-soft);
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &__links {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+
+        a {
+            font-family: var(--ff-display);
+            font-size: 1.2rem;
+            border-bottom: 1px solid transparent;
+
+            &:hover {
+                border-bottom-color: var(--clr-gold);
+            }
+        }
+    }
+}

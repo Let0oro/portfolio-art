@@ -1,0 +1,13 @@
+---
+import '../styles/sections/_ornaments.scss';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`ornamental-frame ${className}`}>
+  <slot />
+</div>

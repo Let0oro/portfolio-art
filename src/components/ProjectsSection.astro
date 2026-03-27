@@ -1,0 +1,62 @@
+---
+import { projectsData } from "../data/projects";
+import "../styles/sections/_projects.scss";
+---
+
+<section id="projects" class="projects-section">
+  <h2 class="projects-section__title">The Gallery</h2>
+
+  <div class="projects-grid">
+    {
+      projectsData.map((project) => (
+        <div class="project-card">
+          <div class="project-card__image-wrapper">
+            <img src={project.image} alt={project.title} loading="lazy" />
+          </div>
+          <div class="project-card__info">
+            <h3>{project.title}</h3>
+            <p class="stack">{project.stack}</p>
+            <p class="desc">{project.description}</p>
+            <div class="actions">
+              {project.codeLink && (
+                <a href={project.codeLink} target="_blank" rel="noreferrer">
+                  Ver Código
+                </a>
+              )}
+              {project.liveLink && (
+                <a href={project.liveLink} target="_blank" rel="noreferrer">
+                  Ver Demo
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.fromTo(
+      ".project-card",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".projects-grid",
+          start: "top 80%",
+        },
+      },
+    );
+  });
+</script>

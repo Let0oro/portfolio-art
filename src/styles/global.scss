@@ -1,0 +1,48 @@
+@use 'tokens';
+@use 'mixins';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--clr-bg);
+    color: var(--clr-ivory);
+    font-family: var(--ff-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+
+    // Subtle texture placeholder
+    // background-image: url('/images/texture-placeholder.png');
+    background-blend-mode: overlay;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include mixins.ornamental-title;
+}
+
+a {
+    color: var(--clr-gold);
+    text-decoration: none;
+    transition: color var(--transition-soft);
+
+    &:hover {
+        color: var(--clr-ivory);
+    }
+}
+
+code,
+pre {
+    font-family: var(--ff-mono);
+}

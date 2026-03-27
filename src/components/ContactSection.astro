@@ -1,0 +1,23 @@
+---
+import '../styles/sections/_contact.scss';
+---
+
+<section id="contact" class="contact-section">
+  <div class="contact-section__container">
+    <h2 class="contact-section__title">Correspondence & Commissions</h2>
+    <p class="contact-section__desc">Leave your message and I shall reply with haste.</p>
+    
+    <form class="contact-section__form" onsubmit="event.preventDefault()">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Submit Enquiry</button>
+    </form>
+    
+    <div class="contact-section__links">
+      <a href="mailto:example@domain.com">Email</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>

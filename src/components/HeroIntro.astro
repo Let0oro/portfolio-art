@@ -1,0 +1,42 @@
+---
+import OrnamentalFrame from "./OrnamentalFrame.astro";
+import "../styles/sections/_hero.scss";
+---
+
+<section id="hero" class="hero-section">
+  <!-- Img de biblioteca antigua ocupando todo el fondo, sin el blur forzado -->
+  <div
+    class="hero-section__bg"
+    style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');"
+  >
+  </div>
+
+  <div class="hero-section__overlay"></div>
+
+  <div class="hero-section__content">
+    <h1>Juan M. Montero</h1>
+    <h2 class="hero-section__subtitle">De las letras al código</h2>
+    <p>
+      Mis raíces están en el estudio de la <strong
+        >Lengua, Literatura y Periodismo</strong
+      >, pero hoy en día vuelco esa pasión por la estructura y la comunicación
+      en construir lógicas y arquitecturas digitales.
+      <br /><br />
+      Soy un <em>Desarrollador y apasionado de la informática</em> enfocado en crear
+      experiencias interactivas y escalables.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Fade in text gracefully
+    gsap.fromTo(
+      ".hero-section__content",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.8, ease: "power3.out", delay: 0.2 },
+    );
+  });
+</script>
