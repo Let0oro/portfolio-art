@@ -1,42 +1,126 @@
 ---
-import OrnamentalFrame from "./OrnamentalFrame.astro";
 import "../styles/sections/_hero.scss";
 ---
 
-<section id="hero" class="hero-section">
-  <!-- Img de biblioteca antigua ocupando todo el fondo, sin el blur forzado -->
-  <div
-    class="hero-section__bg"
-    style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');"
-  >
+<section id="hero" class="hero-poster">
+  <!-- Ink Reveal GIF Mask -->
+  <img
+    id="ink-reveal-gif"
+    src="/videos/ink-reveal.gif"
+    alt=""
+    class="hero-poster__ink-mask"
+    aria-hidden="true"
+  />
+
+
+  <!-- Canvas grain overlay -->
+  <div class="hero-poster__grain" aria-hidden="true"></div>
+
+  <!-- Small top tagline like the poster -->
+  <p class="hero-poster__tagline">where literature meets the logic of code</p>
+
+  <!-- MASSIVE name — split into lines with mixed color -->
+  <div class="hero-poster__title-block">
+    <h1 class="hero-poster__name">
+      <span class="line-1">JU<span class="accent">AN</span> M </span>
+      <span class="line-2">MON<span class="accent">TE</span>RO</span>
+    </h1>
   </div>
 
-  <div class="hero-section__overlay"></div>
+  <!-- The statue image — overlapping the typography -->
+  <div class="hero-poster__statue">
+    <img src="/images/statue-hero.png" alt="Classical statue illustration" />
+  </div>
 
-  <div class="hero-section__content">
-    <h1>Juan M. Montero</h1>
-    <h2 class="hero-section__subtitle">De las letras al código</h2>
-    <p>
-      Mis raíces están en el estudio de la <strong
-        >Lengua, Literatura y Periodismo</strong
-      >, pero hoy en día vuelco esa pasión por la estructura y la comunicación
-      en construir lógicas y arquitecturas digitales.
-      <br /><br />
-      Soy un <em>Desarrollador y apasionado de la informática</em> enfocado en crear
-      experiencias interactivas y escalables.
+  <!-- Bottom left info block -->
+  <div class="hero-poster__info-left">
+    <p class="hero-poster__role">
+      <strong>A Developer</strong><br />
+      bridging humanities<br />
+      & digital craft
     </p>
   </div>
+
+  <!-- Bottom right block -->
+  <div class="hero-poster__info-right">
+    <span class="hero-poster__label">Literature</span>
+    <span class="hero-poster__label">&amp; Journalism</span>
+    <span class="hero-poster__diamond">✦</span>
+  </div>
+
+  <!-- Bottom large text -->
+  <div class="hero-poster__bottom-title">
+    <div class="hero-poster__bottom-word">writer</div>
+    <span class="hero-poster__bottom-sub">code</span>
+  </div>
+
+  <div class="page-corner-ornament" aria-hidden="true"></div>
+
 </section>
 
 <script>
   import { gsap } from "gsap";
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Fade in text gracefully
-    gsap.fromTo(
-      ".hero-section__content",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1.8, ease: "power3.out", delay: 0.2 },
-    );
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const inkGif = document.getElementById(
+      "ink-reveal-gif",
+    ) as HTMLImageElement;
+
+    // Fade out and remove the GIF rapidly before it loops
+    if (inkGif) {
+      gsap.to(inkGif, {
+        opacity: 0,
+        duration: 1.5,
+        delay: 1.5,
+        onComplete: () => {
+          inkGif.style.display = "none";
+        },
+      });
+    }
+
+    // Start hero element animations immediately
+
+    // tl.fromTo(
+    //   ".hero-poster__tagline",
+    //   { opacity: 0, y: -20 },
+    //   { opacity: 1, y: 0, duration: 0.8 },
+    // )
+    //   .fromTo(
+    //     ".hero-poster__name .line-1",
+    //     { opacity: 0, x: -60 },
+    //     { opacity: 1, x: 0, duration: 1 },
+    //     "-=0.4",
+    //   )
+    //   .fromTo(
+    //     ".hero-poster__name .line-2",
+    //     { opacity: 0, x: 60 },
+    //     { opacity: 1, x: 0, duration: 1 },
+    //     "-=0.7",
+    //   )
+    //   .fromTo(
+    //     ".hero-poster__statue img",
+    //     { opacity: 0, scale: 0.9 },
+    //     { opacity: 1, scale: 1, duration: 1.2 },
+    //     "-=0.8",
+    //   )
+    //   .fromTo(
+    //     ".hero-poster__info-left",
+    //     { opacity: 0, y: 30 },
+    //     { opacity: 1, y: 0, duration: 0.8 },
+    //     "-=0.5",
+    //   )
+    //   .fromTo(
+    //     ".hero-poster__bottom-title",
+    //     { opacity: 0, y: 40 },
+    //     { opacity: 1, y: 0, duration: 1 },
+    //     "-=0.6",
+    //   )
+    //   .fromTo(
+    //     ".hero-poster__info-right",
+    //     { opacity: 0 },
+    //     { opacity: 1, duration: 0.6 },
+    //     "-=0.4",
+    //   );
   });
 </script>

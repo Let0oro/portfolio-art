@@ -1,33 +1,57 @@
-@mixin frame($padding: 2rem) {
+@use 'tokens';
+
+// Editorial frame — thin black line, sharp corners, subtle flat shadow
+@mixin frame($padding: 2.5rem) {
     padding: $padding;
-    background-color: var(--clr-panel);
-    border-radius: var(--radius-frame);
-    box-shadow: var(--shadow-soft);
+    background-color: var(--clr-bg-lighter);
+    border: 1px solid var(--clr-ink);
+    box-shadow: var(--shadow-editorial);
     position: relative;
-
-    // Double border effect
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0.5rem;
-        border: 2px solid var(--clr-gold);
-        border-radius: calc(var(--radius-frame) - 0.5rem);
-        pointer-events: none;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 1rem;
-        border: 1px solid var(--clr-oxide);
-        border-radius: calc(var(--radius-frame) - 1rem);
-        pointer-events: none;
-    }
 }
 
 @mixin ornamental-title {
     font-family: var(--ff-display);
-    color: var(--clr-gold);
-    letter-spacing: 0.05em;
-    font-variant-ligatures: common-ligatures discretionary-ligatures;
+    color: var(--clr-ink);
+    letter-spacing: 0.02em;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+@mixin flourish-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--clr-ink);
+        opacity: 0.2;
+    }
+
+    &::before {
+        margin-right: 1.5rem;
+    }
+
+    &::after {
+        margin-left: 1.5rem;
+    }
+
+    .flourish {
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+        border: 1px solid var(--clr-ink);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background-color: var(--clr-red);
+        }
+    }
 }

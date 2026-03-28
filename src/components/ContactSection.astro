@@ -1,23 +1,40 @@
 ---
-import '../styles/sections/_contact.scss';
+import "../styles/sections/_contact.scss";
 ---
 
 <section id="contact" class="contact-section">
+  <div class="contact-section__header">
+    <span class="contact-section__num">04</span>
+    <!-- <h2 class="contact-section__title">
+      Corres<span class="accent">pon</span><br />dence
+    </h2> -->
+    <h2 class="contact-section__title">
+      The<br />Lett<span class="accent">ers</span>
+    </h2>
+    <p class="contact-section__subtitle">commissions & enquiries</p>
+  </div>
+
   <div class="contact-section__container">
-    <h2 class="contact-section__title">Correspondence & Commissions</h2>
-    <p class="contact-section__desc">Leave your message and I shall reply with haste.</p>
-    
     <form class="contact-section__form" onsubmit="event.preventDefault()">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Submit Enquiry</button>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" required></textarea>
+      </div>
+      <button type="submit">Submit Enquiry ✦</button>
     </form>
-    
+
     <div class="contact-section__links">
-      <a href="mailto:example@domain.com">Email</a>
-      <a href="https://github.com" target="_blank">GitHub</a>
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="mailto:example@domain.com">Email →</a>
+      <a href="https://github.com" target="_blank">GitHub →</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn →</a>
     </div>
   </div>
 </section>

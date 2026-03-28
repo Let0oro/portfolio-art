@@ -9,19 +9,88 @@
 
 :root {
     scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    scrollbar-width: none;
 }
 
 body {
     background-color: var(--clr-bg);
-    color: var(--clr-ivory);
+    color: var(--clr-ink);
     font-family: var(--ff-body);
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.7;
     overflow-x: hidden;
 
-    // Subtle texture placeholder
-    // background-image: url('/images/texture-placeholder.png');
-    background-blend-mode: overlay;
+    // Canvas texture — very subtle, just a hint of weave
+    background-image: url('/images/canvas-texture.png');
+    background-blend-mode: exclusion;
+    background-repeat: repeat;
+    background-size: 600px 600px;
 }
+
+// Clouds & light beams — atmospheric Renaissance sky behind content
+.clouds-overlay {
+    position: fixed;
+    inset: 0;
+    background-image: url('/images/clouds-light.png');
+    background-size: cover;
+    background-position: top right;
+    opacity: 0.45;
+    // No blend mode — normal compositing so the clouds are actually visible
+    pointer-events: none;
+    z-index: 1;
+}
+
+// Main content above clouds
+main {
+    position: relative;
+    z-index: 2;
+}
+
+// Grunge layer — poster stains + scratches (visible)
+.grunge-overlay {
+    position: fixed;
+    inset: 0;
+    background-image: url('/images/poster-grunge.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 998;
+}
+
+// Vignette — darkened edges
+.vignette-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 40%,
+            rgba(26, 23, 20, 0.12) 80%,
+            rgba(26, 23, 20, 0.3) 100%);
+    pointer-events: none;
+    z-index: 998;
+}
+
+.page-corner-ornament {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url('/images/engraving-corner.svg');
+    background-size: 125%;
+    background-position: center;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 998;
+}
+
 
 h1,
 h2,
@@ -29,20 +98,73 @@ h3,
 h4,
 h5,
 h6 {
-    @include mixins.ornamental-title;
+    font-family: var(--ff-display);
+    color: var(--clr-ink);
+    letter-spacing: 0.02em;
+    font-weight: 300;
+    line-height: 1.1;
 }
 
 a {
-    color: var(--clr-gold);
+    color: var(--clr-red);
     text-decoration: none;
     transition: color var(--transition-soft);
 
     &:hover {
-        color: var(--clr-ivory);
+        color: var(--clr-ink);
     }
 }
 
 code,
 pre {
     font-family: var(--ff-mono);
+}
+
+// Section divider
+.section-divider {
+    // display: block;
+    background-repeat: no-repeat;
+    width: 45%;
+    height: 270px;
+    background-position: center;
+    background-image: url('/images/engraving-divider.svg');
+    background-size: contain;
+    margin: 0 auto;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+}
+
+// Footer drapery — frontal view of flowers & fabric
+.page-floor {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    // Top edge fades into the page background
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 200px;
+        background: linear-gradient(to bottom, var(--clr-bg), transparent);
+        z-index: 2;
+        pointer-events: none;
+    }
+}
+
+// Editorial horizontal rule
+hr {
+    border: none;
+    border-top: 1px solid var(--clr-ink);
+    opacity: 0.2;
+    margin: 3rem 0;
 }

@@ -1,16 +1,32 @@
 :root {
-  --clr-bg: #08070A;
-  --clr-panel: #2A1414;
-  --clr-gold: #D1B47A;
-  --clr-oxide: #4C6A4F;
-  --clr-red: #B3393A;
+  /* ── Palette: Editorial Poster (Light) ── */
+  --clr-bg: #E8DFD0;
+  /* Warm parchment / aged linen */
+  --clr-bg-lighter: #F2EBE0;
+  /* Slightly lighter variant */
+  --clr-panel: #D8CCBA;
+  /* Muted card background */
+  --clr-ink: #1A1714;
+  /* Near-black ink for text */
+  --clr-ink-soft: #3C3530;
+  /* Softer ink for secondary text */
+  --clr-red: #8B2D2D;
+  /* Deep burgundy/crimson accent */
+  --clr-gold: #9C8555;
+  /* Aged gold, not bright — more tarnished */
+  --clr-oxide: #5A7560;
+  /* Muted verdigris green */
   --clr-ivory: #F3E6D4;
+  /* Lightest tone for highlights */
 
-  --ff-display: "YourArtNouveauFont", "Cormorant Garamond", serif;
+  /* ── Typography ── */
+  --ff-display: "Cormorant Garamond", "Georgia", serif;
   --ff-body: "Cormorant Garamond", serif;
   --ff-mono: "JetBrains Mono", monospace;
 
-  --radius-frame: 28px;
-  --shadow-soft: 0 0 40px rgba(0,0,0,0.8);
+  /* ── Shapes ── */
+  --radius-frame: 0px;
+  /* Sharp editorial corners */
+  --shadow-editorial: 4px 4px 0px rgba(0, 0, 0, 0.15);
   --transition-soft: 250ms ease-out;
 }

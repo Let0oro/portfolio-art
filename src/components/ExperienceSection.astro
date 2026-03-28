@@ -1,9 +1,15 @@
 ---
-import ChronicleBook from './ChronicleBook.tsx';
-import '../styles/sections/_experience.scss';
+import ChronicleBook from "./ChronicleBook.astro";
+import "../styles/sections/_experience.scss";
 ---
 
 <section id="experience" class="experience-section">
-  <h2 class="experience-section__title">The Chronicle</h2>
-  <ChronicleBook client:load />
+  <div class="experience-section__header">
+    <span class="experience-section__num">03</span>
+    <h2 class="experience-section__title">
+      The<br />Chron<span class="accent">icle</span>
+    </h2>
+    <p class="experience-section__subtitle">a record of craft & growth</p>
+  </div>
+  <ChronicleBook />
 </section>

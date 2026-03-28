@@ -1,0 +1,21 @@
+---
+import "../styles/components/_particles.scss";
+---
+
+<div class="particles-container" aria-hidden="true">
+    {
+        Array.from({ length: 50 }).map((_, i) => (
+            <div
+                class="particle"
+                style={`
+          --x: ${Math.random() * 100}vw; 
+          --y: ${Math.random() * 100}vh;
+          --delay: -${Math.random() * 20}s;
+          --duration: ${15 + Math.random() * 25}s;
+          --size: ${1 + Math.random() * 2}px;
+          --opacity: ${0.36 + Math.random() * 0.15};
+        `}
+            />
+        ))
+    }
+</div>
