@@ -17,6 +17,7 @@ export interface Project {
 
 // Sample fallback video
 const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
+const base = import.meta.env.BASE_URL;
 
 export const projectsData: Project[] = [
     {

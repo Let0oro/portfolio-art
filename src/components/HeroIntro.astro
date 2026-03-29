@@ -1,12 +1,13 @@
 ---
 import "../styles/sections/_hero.scss";
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="hero" class="hero-poster">
   <!-- Ink Reveal GIF Mask -->
   <img
     id="ink-reveal-gif"
-    src="/videos/ink-reveal.gif"
+    src={`${base}/videos/ink-reveal.gif`}
     alt=""
     class="hero-poster__ink-mask"
     aria-hidden="true"
@@ -29,7 +30,7 @@ import "../styles/sections/_hero.scss";
 
   <!-- The statue image — overlapping the typography -->
   <div class="hero-poster__statue">
-    <img src="/images/statue-hero.png" alt="Classical statue illustration" />
+    <img src={`${base}/images/statue-hero.png`} alt="Classical statue illustration" />
   </div>
 
   <!-- Bottom left info block -->
