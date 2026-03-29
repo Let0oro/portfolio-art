@@ -16,8 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build & upload
-        uses: withastro/action@v3  # acción oficial de Astro
+
+      - name: Build and upload
+        uses: withastro/action@v4
 
   deploy:
     needs: build
@@ -26,6 +27,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
