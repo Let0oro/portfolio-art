@@ -146,7 +146,9 @@
             color: var(--clr-ink-soft);
             line-height: 1.6;
             font-weight: 600;
-            filter: drop-shadow(0 0 1px var(--clr-bg));
+            filter:
+                drop-shadow(.3px .3px var(--clr-ink))
+                drop-shadow(0 0 1px var(--clr-bg));
         }
 
         .actions {

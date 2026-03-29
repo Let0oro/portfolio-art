@@ -35,7 +35,10 @@ body {
 // Clouds & light beams — atmospheric Renaissance sky behind content
 .clouds-overlay {
     position: fixed;
-    inset: 0;
+    top: -20vh;
+    bottom: -20vh;
+    left: -10vw;
+    right: -10vw;
     background-image: url('/images/clouds-light.png');
     background-size: cover;
     background-position: top right;
@@ -54,7 +57,10 @@ main {
 // Grunge layer — poster stains + scratches (visible)
 .grunge-overlay {
     position: fixed;
-    inset: 0;
+    top: -20vh;
+    bottom: -20vh;
+    left: -10vw;
+    right: -10vw;
     background-image: url('/images/poster-grunge.png');
     background-size: cover;
     background-position: center;
@@ -67,7 +73,10 @@ main {
 // Vignette — darkened edges
 .vignette-overlay {
     position: fixed;
-    inset: 0;
+    top: -20vh;
+    bottom: -20vh;
+    left: -10vw;
+    right: -10vw;
     background: radial-gradient(ellipse at center,
             transparent 40%,
             rgba(26, 23, 20, 0.12) 80%,
@@ -80,8 +89,8 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
-    height: 200px;
+    width: clamp(100px, 15vw, 200px);
+    height: clamp(100px, 15vw, 200px);
     background-image: url('/images/engraving-corner.svg');
     background-size: 125%;
     background-position: center;

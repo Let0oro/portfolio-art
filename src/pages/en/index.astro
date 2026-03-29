@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroIntro from "../../components/HeroIntro.astro";
+import ProjectsSection from "../../components/ProjectsSection.astro";
+import ExperienceSection from "../../components/ExperienceSection.astro";
+import ContactSection from "../../components/ContactSection.astro";
+---
+
+<BaseLayout
+    title="Juan Manuel Montero | Portfolio"
+    description="Portfolio of Juan Manuel Montero"
+>
+    <HeroIntro />
+    <div style="margin-top: 4rem;" class="section-divider"></div>
+    <ProjectsSection />
+    <div class="section-divider"></div>
+    <ExperienceSection />
+    <div class="section-divider"></div>
+    <ContactSection />
+</BaseLayout>

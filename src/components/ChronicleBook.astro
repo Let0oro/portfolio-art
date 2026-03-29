@@ -1,98 +1,11 @@
 ---
 import "../styles/sections/_experience.scss";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { resumePages } from "../data/resume";
 
-const pages = [
-    {
-        title: "Prólogo",
-        dropCap: "D",
-        html: `<p>esarrollador y apasionado de la informática con máster en programación por Rock The Code y experiencia en tecnologías como React, Next.js, Angular, Express, MongoDB y PostgreSQL.</p>
-        <p>He trabajado en proyectos destacados, como un sistema de tracking en tiempo real. Actualmente, estudiando Desarrollo de Aplicaciones Multiplataforma (DAM) en Retamar para profundizar en mis conocimientos de programación.</p>`,
-    },
-    {
-        title: "Experiencia Laboral",
-        html: `<div class="book-entries">
-            <div class="entry">
-                <h4>Freelance Full Stack Developer</h4>
-                <span class="date">2024 &mdash; 2025</span>
-                <ul>
-                    <li>Diseño y desarrollo de soluciones enfocadas en mejorar la experiencia del usuario final en tecnologías como SolidJS y Angular 18.</li>
-                    <li>Enfoque en aplicaciones web TV (Tizen, LG), implementación y mejora de funcionalidad según petición.</li>
-                </ul>
-            </div>
-        </div>`,
-    },
-    {
-        title: "Experiencia Laboral II",
-        html: `<div class="book-entries">
-            <div class="entry">
-                <h4>Packar | React Native Developer</h4>
-                <span class="date">2022 &mdash; 2023</span>
-                <ul>
-                    <li>Desarrollo de aplicaciones con enfoque en funcionalidad en primer y segundo plano, diseño de pantallas y conexión con bases de datos.</li>
-                    <li>Implementación de un sistema de tracking en tiempo real, incluyendo permisos de ubicación en segundo plano.</li>
-                </ul>
-            </div>
-        </div>`,
-    },
-    {
-        title: "Formación",
-        html: `<div class="book-entries">
-            <div class="entry">
-                <h4>Desarrollo de Aplicaciones Multiplataforma</h4>
-                <span class="date">2025 &mdash; Actualidad</span>
-                <p>Retamar - Ciclos formativos FP. Nota media: 9.4</p>
-            </div>
-            <div class="entry">
-                <h4>Máster Full-Stack Developer</h4>
-                <span class="date">2023 &mdash; 2024</span>
-                <p>ThePower</p>
-                <ul>
-                    <li>Desarrollo avanzado de Frontend: React, Next.js, Angular, TS.</li>
-                    <li>Backend: Express, MongoDB, PostgreSQL, Mongoose, Supabase.</li>
-                </ul>
-            </div>
-        </div>`,
-    },
-    {
-        title: "Conocimientos",
-        html: `<div class="book-entries">
-            <div class="entry">
-                <h4>Stack Tecnológico</h4>
-                <p>HTML/CSS, JS/TS, React, React Native, MongoDB, PSQL, Node.js, Express, NextJS, Angular, Jest, Vitest, Python, Java, Spring Boot.</p>
-            </div>
-            <br />
-            <div class="entry">
-                <h4>Idiomas</h4>
-                <ul>
-                    <li>Inglés: B2</li>
-                    <li>Francés: A2</li>
-                    <li>Alemán: A2</li>
-                </ul>
-            </div>
-        </div>`,
-    },
-    {
-        title: "Voluntariado e Int.",
-        html: `<div class="book-entries">
-            <div class="entry">
-                <h4>Coordinador Cáritas</h4>
-                <span class="date">2023 &mdash; Actualidad</span>
-                <p>San Saturnino &mdash; Alcorcón</p>
-            </div>
-            <div class="entry">
-                <h4>Acompañamiento hospitalario</h4>
-                <span class="date">2022 &mdash; Actualidad</span>
-                <p>Las Praderas (Pozuelo) / Hospital Alcorcón</p>
-            </div>
-            <br />
-            <div class="entry">
-                <h4>Otros intereses</h4>
-                <p>Interés cultural por el teatro, ópera e historia. Lector y escritor de poesía y cuentos.</p>
-            </div>
-        </div>`,
-    },
-];
-
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pages = resumePages[lang];
 const totalPages = pages.length;
 ---
 
@@ -114,7 +27,7 @@ const totalPages = pages.length;
 
         <!-- The 3D flipping page overlay -->
         <div
-            class="flipping-page flip-next"
+            class="flipping-page flip-next desktop-only"
             id="flip-page"
             style="display:none;"
         >
@@ -137,13 +50,13 @@ const totalPages = pages.length;
 
         <!-- Controls -->
         <div class="book-controls corner-prev">
-            <button id="btn-prev" disabled aria-label="Página anterior"
-                >Anterior</button
+            <button id="btn-prev" disabled aria-label={t("book.prev")}
+                >{t("book.prev")}</button
             >
         </div>
         <div class="book-controls corner-next">
-            <button id="btn-next" aria-label="Página siguiente"
-                >Siguiente</button
+            <button id="btn-next" aria-label={t("book.next")}
+                >{t("book.next")}</button
             >
         </div>
     </div>
@@ -329,7 +242,10 @@ const totalPages = pages.length;
 
             flipPage.className = "flipping-page flip-prev desktop-only";
             flipPage.style.display = "";
-            gsap.set(flipPage, { rotateY: 0 });
+            gsap.set(flipPage, {
+                rotateY: 0,
+                transformOrigin: "calc(100% + 20px) 50%",
+            });
 
             // Front = current left page
             flipFront.innerHTML = pageHTML(pageIndex);

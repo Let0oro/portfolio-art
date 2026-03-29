@@ -1,6 +1,9 @@
 ---
 import ChronicleBook from "./ChronicleBook.astro";
 import "../styles/sections/_experience.scss";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="experience" class="experience-section">
@@ -9,7 +12,7 @@ import "../styles/sections/_experience.scss";
     <h2 class="experience-section__title">
       The<br />Chron<span class="accent">icle</span>
     </h2>
-    <p class="experience-section__subtitle">a record of craft & growth</p>
+    <p class="experience-section__subtitle">{t("chronicle.subtitle")}</p>
   </div>
   <ChronicleBook />
 </section>

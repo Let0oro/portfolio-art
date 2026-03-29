@@ -8,7 +8,10 @@ export interface Project {
     title: string;
     year?: string;
     stack: string;
-    description: string;
+    description: {
+        es: string;
+        en: string;
+    };
     image: string;
     codeLink?: string;
     liveLink?: string;
@@ -17,14 +20,16 @@ export interface Project {
 
 // Sample fallback video
 const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
-const base = import.meta.env.BASE_URL;
 
 export const projectsData: Project[] = [
     {
         id: "minimal-writer",
         title: "Minimal Writer",
         stack: "React • TypeScript",
-        description: "Un procesador de textos minimalista diseñado para escribir sin distracciones, enfocado en la productividad y la fluidez del autor.",
+        description: {
+            es: "Un procesador de textos minimalista diseñado para escribir sin distracciones, enfocado en la productividad y la fluidez del autor.",
+            en: "A minimalist word processor designed for distraction-free writing, focusing on the author's productivity and flow."
+        },
         image: "https://placeholder.co/400x600/2A1414/D1B47A?text=Minimal+Writer",
         codeLink: "https://github.com/Let0oro/minimal-writer",
         gallery: [
@@ -38,8 +43,11 @@ export const projectsData: Project[] = [
     {
         id: "space-pixels",
         title: "Space Pixels",
-        stack: "JavaScript • Canvas",
-        description: "Una simulación inmersiva que recrea sistemas estelares a nivel de partícula. Mediante cálculos directos de gravedad bidimensional, este motor visual fusiona el arte algorítmico y física de fluidos en tiempo real.",
+        stack: "React • TypeScript",
+        description: {
+            es: "Space invaders con estilo pixel art. Los jugadores pueden crear y personalizar sus naves, consultar puntuaciones y explorar múltiples funcionalidades a través de una interfaz interactiva.",
+            en: "Pixel art style space invaders. Players can create and customize their ships, view scores and explore multiple features through an interactive interface."
+        },
         image: "https://placeholder.co/400x600/08070A/4C6A4F?text=Space+Pixels",
         codeLink: "https://github.com/Let0oro/space-pixels",
         gallery: [
@@ -54,7 +62,10 @@ export const projectsData: Project[] = [
         id: "mind-breakers",
         title: "Mind Breakers",
         stack: "Next.js • TypeScript",
-        description: "Plataforma gamificada orientada a sostener la constancia del autoaprendizaje. Aprovechando el ecosistema de Next.js, transforma el registro del progreso académico en un juego de rol donde los usuarios ganan XP y compiten en leaderboards.",
+        description: {
+            es: "Plataforma gamificada orientada a sostener la constancia del autoaprendizaje. Aprovechando el ecosistema de Next.js, transforma el registro del progreso académico en un juego de rol donde los usuarios ganan XP y compiten en leaderboards.",
+            en: "Gamified platform aimed at sustaining consistency in self-learning. Leveraging the Next.js ecosystem, it transforms the tracking of academic progress into a role-playing game where users earn XP and compete on leaderboards."
+        },
         image: "https://placeholder.co/400x600/B3393A/F3E6D4?text=Mind+Breakers",
         codeLink: "https://github.com/Let0oro/mind-breakers",
         liveLink: "https://mind-breakers.vercel.app",
@@ -70,7 +81,10 @@ export const projectsData: Project[] = [
         id: "book-mng",
         title: "Book-Mng",
         stack: "Tauri • Rust • React • Turso",
-        description: "App de escritorio multiplataforma (Tauri + Rust + Vite) para el seguimiento de lecturas. Utiliza una BD local SQLite cifrada con sincronización en la nube vía Turso. Arquitectura optimizada 3NF sin problemas de consultas N+1 y diseño ultra-minimalista con edición inline.",
+        description: {
+            es: "App de escritorio multiplataforma (Tauri + Rust + Vite) para el seguimiento de lecturas. Utiliza una BD local SQLite cifrada con sincronización en la nube vía Turso. Arquitectura optimizada 3NF sin problemas de consultas N+1 y diseño ultra-minimalista con edición inline.",
+            en: "Cross-platform desktop app (Tauri + Rust + Vite) for reading tracking. Uses an encrypted local SQLite DB with cloud sync via Turso. Optimized 3NF architecture with no N+1 query issues and an ultra-minimalist design with inline editing."
+        },
         image: "https://placeholder.co/400x600/08070A/D1B47A?text=Book-Mng",
         codeLink: "https://github.com/Let0oro",
         gallery: [
@@ -85,7 +99,10 @@ export const projectsData: Project[] = [
         id: "infinite-study",
         title: "Infinite Study",
         stack: "Rust • React • OCR",
-        description: "Plataforma Open Source orientada a estudiantes e investigadores para la gestión de archivos. Integra un potente motor OCR en Rust, un modelo de aprendizaje inspirado en la técnica Feynman, y un editor Markdown avanzado con soporte para esquemas interactivos.",
+        description: {
+            es: "Plataforma Open Source orientada a estudiantes e investigadores para la gestión de archivos. Integra un potente motor OCR en Rust, un modelo de aprendizaje inspirado en la técnica Feynman, y un editor Markdown avanzado con soporte para esquemas interactivos.",
+            en: "Open Source platform aimed at students and researchers for file management. Integrates a powerful OCR engine in Rust, a learning model inspired by the Feynman technique, and an advanced Markdown editor with interactive outline support."
+        },
         image: "https://placeholder.co/400x600/2A1414/4C6A4F?text=Infinite+Study",
         codeLink: "https://github.com/Let0oro",
         gallery: [

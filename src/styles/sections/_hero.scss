@@ -133,6 +133,12 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
+
+        @media (max-width: 768px) {
+            &>strong {
+                text-shadow: 0 0 1px var(--clr-bg), 0 0 2px var(--clr-bg);
+            }
+        }
     }
 
     // ─── Bottom right info ───────────────────────────────
@@ -184,7 +190,7 @@
         letter-spacing: -0.02em;
         line-height: 1;
         font-style: italic;
-        text-shadow: 
+        text-shadow:
             0 0 3px var(--clr-bg),
             0 0 3px var(--clr-bg),
             .3px .3px var(--clr-ink),
@@ -210,11 +216,11 @@
             padding-top: 0;
             font-weight: 500;
 
-            text-shadow: 
-            0 0 3px var(--clr-bg),
-            0 0 3px var(--clr-bg),
-            .3px .3px var(--clr-ink),
-            .4px .4px var(--clr-ink);
+            text-shadow:
+                0 0 3px var(--clr-bg),
+                0 0 3px var(--clr-bg),
+                .3px .3px var(--clr-ink),
+                .4px .4px var(--clr-ink);
 
         }
 

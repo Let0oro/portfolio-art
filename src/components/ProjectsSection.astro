@@ -1,6 +1,9 @@
 ---
 import { projectsData } from "../data/projects";
 import "../styles/sections/_projects.scss";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="projects" class="projects-section">
@@ -9,7 +12,7 @@ import "../styles/sections/_projects.scss";
     <h2 class="projects-section__title">
       The<br />Gal<span class="accent">lery</span>
     </h2>
-    <p class="projects-section__subtitle">selected works & experiments</p>
+    <p class="projects-section__subtitle">{t("gallery.subtitle")}</p>
   </div>
 
   <div class="projects-grid">
@@ -25,24 +28,24 @@ import "../styles/sections/_projects.scss";
           <div class="project-card__info">
             <h3>{project.title}</h3>
             <p class="stack">{project.stack}</p>
-            <p class="desc">{project.description}</p>
+            <p class="desc">{project.description[lang]}</p>
             <div class="actions">
               {project.gallery && project.gallery.length > 0 && (
                 <button
                   class="btn-preview"
                   data-gallery={JSON.stringify(project.gallery)}
                 >
-                  Preview ✦
+                  {t("gallery.preview")} ✦
                 </button>
               )}
               {project.codeLink && (
                 <a href={project.codeLink} target="_blank" rel="noreferrer">
-                  Source
+                  {t("gallery.source")}
                 </a>
               )}
               {project.liveLink && (
                 <a href={project.liveLink} target="_blank" rel="noreferrer">
-                  Live →
+                  {t("gallery.live")} →
                 </a>
               )}
             </div>

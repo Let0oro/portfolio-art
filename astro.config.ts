@@ -5,5 +5,12 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   site: 'https://let0oro.github.io',
-  base: '/portfolio-art/'
+  base: process.env.NODE_ENV === 'production' ? '/portfolio-art/' : '/',
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

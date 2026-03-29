@@ -144,6 +144,7 @@
         border-top: 1px solid rgba(26, 23, 20, 0.15);
         padding-top: 2rem;
         justify-content: center;
+
         a {
             font-family: var(--ff-mono);
             font-size: 0.65rem;
@@ -158,5 +159,9 @@
                 color: var(--clr-red);
             }
         }
+    }
+
+    @media (max-width: 768px) {
+        padding: 4rem 2rem 6rem;
     }
 }
