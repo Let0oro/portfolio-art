@@ -5,5 +5,5 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   site: 'https://let0oro.github.io',
-  base: 'portfolio-art'
+  base: '/portfolio-art/'
 });
