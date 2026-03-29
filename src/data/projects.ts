@@ -18,7 +18,6 @@ export interface Project {
     gallery?: GalleryItem[];
 }
 
-// Sample fallback video
 const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
 
 export const projectsData: Project[] = [
@@ -31,7 +30,6 @@ export const projectsData: Project[] = [
             en: "A minimalist word processor designed for distraction-free writing, focusing on the author's productivity and flow."
         },
         image: "https://placeholder.co/400x600/2A1414/D1B47A?text=Minimal+Writer",
-        codeLink: "https://github.com/Let0oro/minimal-writer",
         gallery: [
             { type: 'image', url: "https://placeholder.co/1280x720/2A1414/D1B47A?text=Minimal+Writer+Screen+1" },
             { type: 'video', url: sampleVideo },
@@ -50,6 +48,7 @@ export const projectsData: Project[] = [
         },
         image: "https://placeholder.co/400x600/08070A/4C6A4F?text=Space+Pixels",
         codeLink: "https://github.com/Let0oro/space-pixels",
+        liveLink: "https://space-pixels.vercel.app",
         gallery: [
             { type: 'image', url: "https://placeholder.co/1280x720/08070A/4C6A4F?text=Space+Pixels+1" },
             { type: 'video', url: sampleVideo },
@@ -86,7 +85,6 @@ export const projectsData: Project[] = [
             en: "Cross-platform desktop app (Tauri + Rust + Vite) for reading tracking. Uses an encrypted local SQLite DB with cloud sync via Turso. Optimized 3NF architecture with no N+1 query issues and an ultra-minimalist design with inline editing."
         },
         image: "https://placeholder.co/400x600/08070A/D1B47A?text=Book-Mng",
-        codeLink: "https://github.com/Let0oro",
         gallery: [
             { type: 'image', url: "https://placeholder.co/1280x720/08070A/D1B47A?text=Book-Mng+Main" },
             { type: 'video', url: sampleVideo },
@@ -104,7 +102,6 @@ export const projectsData: Project[] = [
             en: "Open Source platform aimed at students and researchers for file management. Integrates a powerful OCR engine in Rust, a learning model inspired by the Feynman technique, and an advanced Markdown editor with interactive outline support."
         },
         image: "https://placeholder.co/400x600/2A1414/4C6A4F?text=Infinite+Study",
-        codeLink: "https://github.com/Let0oro",
         gallery: [
             { type: 'image', url: "https://placeholder.co/1280x720/2A1414/4C6A4F?text=Infinite+Study+Dashboard" },
             { type: 'video', url: sampleVideo },
