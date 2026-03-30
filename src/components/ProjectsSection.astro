@@ -2,6 +2,7 @@
 import { projectsData } from "../data/projects";
 import "../styles/sections/_projects.scss";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -20,7 +21,12 @@ const t = useTranslations(lang);
       projectsData.map((project, i) => (
         <div class="project-card">
           <div class="project-card__image-wrapper">
-            <img src={project.image} alt={project.title} loading="lazy" />
+            <Image
+              src={project.image}
+              alt={project.title}
+              inferSize={true}
+              loading="lazy"
+            />
             <span class="project-card__index">
               {String(i + 1).padStart(2, "0")}
             </span>
@@ -46,6 +52,11 @@ const t = useTranslations(lang);
               {project.liveLink && (
                 <a href={project.liveLink} target="_blank" rel="noreferrer">
                   {t("gallery.live")} →
+                </a>
+              )}
+              {project.videoLink && (
+                <a href={project.videoLink} target="_blank" rel="noreferrer">
+                  {t("gallery.video")} →
                 </a>
               )}
             </div>

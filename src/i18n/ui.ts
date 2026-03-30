@@ -24,6 +24,7 @@ export const ui = {
         'gallery.preview': 'Preview',
         'gallery.source': 'Source',
         'gallery.live': 'Live',
+        'gallery.video': 'Video',
 
         'chronicle.subtitle': 'a record of craft & growth',
 
@@ -54,6 +55,7 @@ export const ui = {
         'gallery.preview': 'Ver demo',
         'gallery.source': 'Código',
         'gallery.live': 'Ver web',
+        'gallery.video': 'Video',
 
         'chronicle.subtitle': 'un registro de vida',
 

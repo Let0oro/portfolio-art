@@ -76,7 +76,7 @@ export const resumePages: Record<'es' | 'en', ResumePage[]> = {
             </div>`,
         },
         {
-            title: "Voluntariado e Int.",
+            title: "Voluntariado",
             html: `<div class="book-entries">
                 <div class="entry">
                     <h4>Coordinador Cáritas</h4>
