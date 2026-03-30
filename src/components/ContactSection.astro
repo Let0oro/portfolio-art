@@ -8,9 +8,6 @@ const t = useTranslations(lang);
 <section id="contact" class="contact-section">
   <div class="contact-section__header">
     <span class="contact-section__num">04</span>
-    <!-- <h2 class="contact-section__title">
-      Corres<span class="accent">pon</span><br />dence
-    </h2> -->
     <h2 class="contact-section__title">
       The<br />Lett<span class="accent">ers</span>
     </h2>
@@ -18,26 +15,80 @@ const t = useTranslations(lang);
   </div>
 
   <div class="contact-section__container">
-    <form class="contact-section__form" onsubmit="event.preventDefault()">
+    <form
+      class="contact-section__form"
+      action="https://formspree.io/f/xnjodjvv"
+      method="POST"
+    >
       <div class="form-group">
         <label for="name">{t("contact.formName")}</label>
-        <input type="text" id="name" required />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          title="Name is required"
+          required
+        />
       </div>
       <div class="form-group">
         <label for="email">{t("contact.formEmail")}</label>
-        <input type="email" id="email" required />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          title="Email is required"
+          required
+        />
       </div>
       <div class="form-group">
         <label for="message">{t("contact.formMessage")}</label>
-        <textarea id="message" required></textarea>
+        <textarea
+          id="message"
+          name="message"
+          title="Message is required"
+          required></textarea>
       </div>
       <button type="submit">{t("contact.formSubmit")}</button>
     </form>
 
     <div class="contact-section__links">
-      <a href="mailto:example@domain.com">Email →</a>
-      <a href="https://github.com" target="_blank">GitHub →</a>
-      <a href="https://linkedin.com" target="_blank">LinkedIn →</a>
+      <a id="email-link" href="mailto:juanmmb.dev@gmail.com">Email →</a>
+      <a href="https://github.com/Let0oro" target="_blank">GitHub →</a>
+      <a href="https://www.linkedin.com/in/juanmmontero/" target="_blank"
+        >LinkedIn →</a
+      >
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nameInput = document.getElementById(
+      "name",
+    ) as HTMLInputElement | null;
+    const messageInput = document.getElementById(
+      "message",
+    ) as HTMLTextAreaElement | null;
+    const emailLink = document.getElementById(
+      "email-link",
+    ) as HTMLAnchorElement | null;
+
+    const baseEmail = "juanmmb.dev@gmail.com";
+
+    const updateEmailLink = () => {
+      if (!emailLink) return;
+      const name = nameInput?.value.trim() || "";
+      const message = messageInput?.value.trim() || "";
+
+      const subject = encodeURIComponent(
+        name ? `Contacto de ${name}` : "Contacto desde Portfolio",
+      );
+      const body = encodeURIComponent(message);
+
+      emailLink.href = `mailto:${baseEmail}?subject=${subject}&body=${body}`;
+    };
+
+    nameInput?.addEventListener("input", updateEmailLink);
+    messageInput?.addEventListener("input", updateEmailLink);
+  });
+</script>

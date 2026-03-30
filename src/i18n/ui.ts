@@ -42,12 +42,12 @@ export const ui = {
         'nav.chronicle': 'Crónica',
         'nav.letters': 'Cartas',
 
-        'hero.tagline': 'donde la literatura se cruza con la lógica del código',
+        'hero.tagline': 'donde la literatura se entreteje con la lógica del código',
         'hero.dev': 'Un Desarrollador',
-        'hero.designer': 'uniendo humanidades<br />y arte digital',
+        'hero.designer': 'uniendo humanidades<br />y creación digital',
         'hero.label1': 'Literatura',
         'hero.label2': '& Periodismo',
-        'hero.bottom1': 'escritor',
+        'hero.bottom1': 'con buena letra',
         'hero.bottom2': 'código',
 
         'gallery.subtitle': 'obras seleccionadas & experimentos',
@@ -55,7 +55,7 @@ export const ui = {
         'gallery.source': 'Código',
         'gallery.live': 'Ver web',
 
-        'chronicle.subtitle': 'un registro de arte y crecimiento',
+        'chronicle.subtitle': 'un registro de vida',
 
         'contact.subtitle': 'encargos y consultas',
         'contact.formName': 'Tu Nombre',
