@@ -25,9 +25,14 @@ const t = useTranslations(lang);
   <span class="editorial-nav__diamond" aria-hidden="true">✦</span>
 
   <div class="lang-switcher">
-    <a href="/" class={lang === "es" ? "active" : ""}>es</a>
+    <a href={import.meta.env.BASE_URL} class={lang === "es" ? "active" : ""}
+      >es</a
+    >
     <span class="sep">|</span>
-    <a href="/en/" class={lang === "en" ? "active" : ""}>en</a>
+    <a
+      href={`${import.meta.env.BASE_URL}en/`}
+      class={lang === "en" ? "active" : ""}>en</a
+    >
   </div>
 </nav>
 
