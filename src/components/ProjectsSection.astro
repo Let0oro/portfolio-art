@@ -20,17 +20,6 @@ const t = useTranslations(lang);
     {
       projectsData.map((project, i) => (
         <div class="project-card">
-          <div class="project-card__image-wrapper">
-            <Image
-              src={project.image}
-              alt={project.title}
-              inferSize={true}
-              loading="lazy"
-            />
-            <span class="project-card__index">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-          </div>
           <div class="project-card__info">
             <h3>{project.title}</h3>
             <p class="stack">{project.stack}</p>
@@ -44,9 +33,14 @@ const t = useTranslations(lang);
                   {t("gallery.preview")} ✦
                 </button>
               )}
+              {project.videoLink && (
+                <a href={project.videoLink} target="_blank" rel="noreferrer">
+                  {t("gallery.video")} →
+                </a>
+              )}
               {project.codeLink && (
                 <a href={project.codeLink} target="_blank" rel="noreferrer">
-                  {t("gallery.source")}
+                  {t("gallery.source")} →
                 </a>
               )}
               {project.liveLink && (
@@ -54,10 +48,8 @@ const t = useTranslations(lang);
                   {t("gallery.live")} →
                 </a>
               )}
-              {project.videoLink && (
-                <a href={project.videoLink} target="_blank" rel="noreferrer">
-                  {t("gallery.video")} →
-                </a>
+              {project.commingSoon && (
+                <span class="comming-soon">{t("gallery.commingSoon")}</span>
               )}
             </div>
           </div>

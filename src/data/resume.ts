@@ -86,7 +86,7 @@ export const resumePages: Record<'es' | 'en', ResumePage[]> = {
                 <div class="entry">
                     <h4>Acompañamiento hospitalario</h4>
                     <span class="date">2022 &mdash; Actualidad</span>
-                    <p>Las Praderas (Pozuelo) / Hospital Alcorcón</p>
+                    <p>Las Praderas (Pozuelo) / Hospital Fundación Alcorcón</p>
                 </div>
                 <br />
                 <div class="entry">
@@ -177,7 +177,7 @@ export const resumePages: Record<'es' | 'en', ResumePage[]> = {
                 <div class="entry">
                     <h4>Hospital Accompaniment</h4>
                     <span class="date">2022 &mdash; Present</span>
-                    <p>Las Praderas (Pozuelo) / Hospital Alcorcón</p>
+                    <p>Las Praderas (Pozuelo) / Alcorcón Hospital Foundation</p>
                 </div>
                 <br />
                 <div class="entry">

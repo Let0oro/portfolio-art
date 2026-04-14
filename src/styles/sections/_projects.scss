@@ -148,14 +148,14 @@
             line-height: 1.6;
             font-weight: 600;
             filter:
-                drop-shadow(.3px .3px var(--clr-ink))
-                drop-shadow(0 0 1px var(--clr-bg));
+                drop-shadow(.3px .3px var(--clr-ink)) drop-shadow(0 0 1px var(--clr-bg));
         }
 
         .actions {
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
+            justify-content: flex-start;
 
             a,
             button.btn-preview {
@@ -176,8 +176,24 @@
                     color: var(--clr-red);
                 }
             }
+
+            .comming-soon {
+                position: absolute;
+                top: 1rem;
+                right: 0;
+                color: var(--clr-red);
+                font-family: var(--ff-mono);
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                opacity: 0.75;
+                font-weight: 600;
+                background-color: var(--clr-bg);
+                padding: 0.1rem 0.25rem;
+            }
         }
     }
+
 }
 
 /* ─── Modal — Poster Style ─────────────────────────────── */

@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+*::selection {
+    background-color: var(--clr-red);
+    color: var(--clr-bg);
+}
+
 :root {
     scroll-behavior: smooth;
 
